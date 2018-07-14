@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--在配置文件中写的类都会被实例化-->
+
+    <!--把写好的类配置进来,UserService的创建权交给了Spring-->
+    <bean id="userService" class="com.yww.demo1.UserServiceImpl">
+        <!--设置属性-->
+        <property name="name" value="老王"></property>
+    </bean>
+
+    <bean id="food" class="com.yww.test1.Food">
+        <property name="kind" value="水果"></property>
+        <property name="name" value="香蕉"></property>
+        <property name="taste" value="甜甜的"></property>
+    </bean>
+
+    <!--Bean实例化的三种方式-->
+    <!--第一种: 无参构造器的方式-->
+    <bean id="bean1" class="com.yww.demo2.Bean1"></bean>
+
+    <!--第二种: 静态工厂的方式-->
+    <bean id="bean2" class="com.yww.demo2.BeanFactory" factory-method="createBean2"/>
+
+    <!--第三种: 实例工厂的方式-->
+    <bean id="bean3Factory" class="com.yww.demo2.Bean3Factory"/>
+    <bean id="bean3" factory-bean="bean3Factory" factory-method="createBean3"/>
+
+
+
+</beans>
